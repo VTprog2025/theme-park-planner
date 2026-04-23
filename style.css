@@ -1,0 +1,51 @@
+/* ── Reset & Base ── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+}
+
+/* TODO: Style the header */
+header {
+
+}
+
+/* TODO: Style the navigation links */
+nav a {
+
+}
+
+/* TODO: Style the main content area */
+main {
+
+}
+
+/* TODO: Style the filter section */
+#filters {
+
+}
+
+/* TODO: Style ride cards */
+.ride-card {
+
+}
+
+/* TODO: Style thrill level badges (low, medium, high) */
+.thrill-low    {}
+.thrill-medium {}
+.thrill-high   {}
+
+/* TODO: Style Add and Remove buttons */
+.add-btn    {}
+.remove-btn {}
+
+/* TODO: Style the footer */
+footer {
+
+}
