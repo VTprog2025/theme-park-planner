@@ -9,43 +9,177 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f4f8;
     color: #333;
+    line-height: 1.5;
 }
 
-/* TODO: Style the header */
+/* ── Header ── */
 header {
-
+    background: #1f2a44;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-/* TODO: Style the navigation links */
+header h1 {
+    font-size: 1.8rem;
+}
+
+/* ── Navigation ── */
 nav a {
-
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: 600;
 }
 
-/* TODO: Style the main content area */
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ── Layout ── */
 main {
-
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-/* TODO: Style the filter section */
+section {
+    margin-bottom: 2rem;
+}
+
+/* ── Filter Section ── */
 #filters {
-
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: grid;
+    gap: 0.75rem;
 }
 
-/* TODO: Style ride cards */
+#filters label {
+    font-weight: 600;
+}
+
+#filters select,
+#filters input,
+#filters button {
+    padding: 0.65rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+#filters button {
+    background: #2d6cdf;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#filters button:hover {
+    background: #1f57bb;
+}
+
+/* ── Ride / Itinerary Cards ── */
+#ride-list,
+#itinerary-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
 .ride-card {
-
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* TODO: Style thrill level badges (low, medium, high) */
-.thrill-low    {}
-.thrill-medium {}
-.thrill-high   {}
+.ride-card h3 {
+    margin-bottom: 0.5rem;
+    color: #1f2a44;
+}
 
-/* TODO: Style Add and Remove buttons */
-.add-btn    {}
-.remove-btn {}
+.ride-card p {
+    margin-bottom: 0.5rem;
+}
 
-/* TODO: Style the footer */
+/* ── Thrill Level Badges ── */
+.thrill {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.thrill-low {
+    background: #d4edda;
+    color: #155724;
+}
+
+.thrill-medium {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.thrill-high {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ── Buttons ── */
+.add-btn,
+.remove-btn {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.add-btn {
+    background: #28a745;
+}
+
+.add-btn:hover {
+    background: #218838;
+}
+
+.remove-btn {
+    background: #dc3545;
+}
+
+.remove-btn:hover {
+    background: #c82333;
+}
+
+/* ── Footer ── */
 footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
 
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
 }
