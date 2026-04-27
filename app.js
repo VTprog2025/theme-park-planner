@@ -13,8 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// showToast(message) - displays a brief toast notification at the bottom right
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.remove('hidden', 'fade-out');
+
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.classList.add('hidden'), 500);
+    }, 2500);
+}
+
 // loadRides() - builds query params from filters and fetches get_rides.php
 function loadRides() {
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('hidden');
+    document.getElementById('ride-list').innerHTML = '';
+
     let params = new URLSearchParams();
     const park     = document.getElementById('park-select').value;
     const thrill   = document.getElementById('thrill-level-select').value;
@@ -26,8 +42,14 @@ function loadRides() {
 
     fetch('get_rides.php?' + params.toString())
         .then(response => response.json())
-        .then(rides => renderRides(rides))
-        .catch(err => console.error('Error loading rides:', err));
+        .then(rides => {
+            spinner.classList.add('hidden');
+            renderRides(rides);
+        })
+        .catch(err => {
+            spinner.classList.add('hidden');
+            console.error('Error loading rides:', err);
+        });
 }
 
 // renderRides(rides) - loops through rides array and builds HTML cards
@@ -66,9 +88,9 @@ function addToItinerary(rideId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Ride added to your itinerary!');
+            showToast('✨ Ride added to your itinerary!');
         } else {
-            alert(data.error || 'Could not add ride.');
+            showToast(data.error || 'Could not add ride.');
         }
     })
     .catch(err => console.error('Error adding to itinerary:', err));
@@ -121,9 +143,10 @@ function removeFromItinerary(rideId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
+            showToast('🗑️ Ride removed from your itinerary.');
             loadItinerary();
         } else {
-            alert(data.error || 'Could not remove ride.');
+            showToast(data.error || 'Could not remove ride.');
         }
     })
     .catch(err => console.error('Error removing from itinerary:', err));

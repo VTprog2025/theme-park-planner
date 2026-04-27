@@ -1,5 +1,5 @@
 <?php
-// TODO: Set user id (add session support later)
+// Set user id (add session support later)
 $user_id = 1;
 ?>
 <!DOCTYPE html>
@@ -45,12 +45,15 @@ $user_id = 1;
         <button id="filter-button">Apply Filters</button>
     </div>
 
+    <div id="spinner" class="spinner hidden"></div>
     <div id="ride-list"></div>
 </main>
 
 <footer>
     <p>&copy; 2026 Theme Park Planner. All rights reserved.</p>
 </footer>
+
+<div id="toast" class="toast hidden"></div>
 
 <script>
     const USER_ID = <?php echo $user_id; ?>;
