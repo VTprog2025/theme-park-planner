@@ -1,16 +1,30 @@
 <?php
+// remove_itinerary.php - API endpoint to remove a ride from user's itinerary
+// Christopher Boartfield
+// CPSC 5210 - Final Project
+// This file handles POST requests to remove a specified ride from the user's itinerary.
+// It validates input and updates the database accordingly.
+
 header('Content-Type: application/json');
 require_once 'db.php';
 
-// TODO: Read JSON body from request
-// $data = json_decode(file_get_contents('php://input'), true);
+// Read JSON input from request body
+$data = json_decode(file_get_contents('php://input'), true);
 
-// TODO: Extract user_id and ride_id
+// Extract user and ride ID from request data
+$user_id = $data['user_id'] ?? null;
+$ride_id = $data['ride_id'] ?? null;
 
-// TODO: Validate that both values are present
+// Validation for user_id and ride_id
+if (!$user_id || !$ride_id) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing user_id or ride_id']);
+    exit;
+}
 
-// TODO: Delete matching row from itinerary table
+// Delete from itinerary where user_id and ride_id match
+$stmt = $pdo->prepare('DELETE FROM itinerary WHERE user_id = :user_id AND ride_id = :ride_id');
+$stmt->execute(['user_id' => $user_id, 'ride_id' => $ride_id]);
 
-// TODO: Return success response
-// echo json_encode(['success' => true]);
+echo json_encode(['success' => true]);
 ?>

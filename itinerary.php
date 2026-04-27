@@ -12,16 +12,19 @@ $user_id = 1;
 <body>
 
 <header>
-    <!-- TODO: Add site title and navigation -->
+    <h1>My Itinerary</h1>
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="itinerary.php">My Itinerary</a>
+    </nav>
 </header>
 
 <main>
-    <!-- TODO: Add itinerary list container -->
     <div id="itinerary-list"></div>
 </main>
 
 <footer>
-    <!-- TODO: Add footer content -->
+    <p>&copy; 2026 Theme Park Planner. All rights reserved.</p>
 </footer>
 
 <script>
