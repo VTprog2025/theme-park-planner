@@ -1,158 +1,320 @@
 /* style.css - Main stylesheet for the Theme Park Planner
  * Christopher Boartfield
  * CPSC 5210 - Final Project
- * This file contains all the CSS styles for the Theme Park Planner web application.
- * It defines the layout, colors, and typography to create a user-friendly
- * interface for browsing rides and managing the itinerary.
+ * Magical theme-park inspired design using Google Fonts and custom CSS.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;600&display=swap');
+
+/* ── Reset ────────────────────────────────────────────────── */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* ── Base ─────────────────────────────────────────────────── */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f4f8;
-    color: #333;
+    font-family: 'Lato', sans-serif;
+    background: #0d0d2b;
+    color: #f0eaff;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(100, 60, 180, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(30, 80, 160, 0.15) 0%, transparent 60%);
 }
 
+/* ── Header ───────────────────────────────────────────────── */
 header {
-    background: #1f2937;
-    color: #fff;
-    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #0a0a2e 0%, #1a1050 50%, #0a0a2e 100%);
+    border-bottom: 2px solid #f5c518;
+    padding: 1.25rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(245, 197, 24, 0.2);
+}
+
+header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.75rem;
+    color: #f5c518;
+    text-shadow: 0 0 20px rgba(245, 197, 24, 0.5), 0 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 0.05em;
+}
+
+/* ── Navigation ───────────────────────────────────────────── */
+nav {
+    display: flex;
+    gap: 0.5rem;
 }
 
 nav a {
-    color: #fff;
+    color: #f0eaff;
     text-decoration: none;
-    margin-left: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(245, 197, 24, 0.4);
+    border-radius: 20px;
+    transition: all 0.2s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background: rgba(245, 197, 24, 0.15);
+    border-color: #f5c518;
+    color: #f5c518;
+    text-shadow: 0 0 8px rgba(245, 197, 24, 0.5);
 }
 
+/* ── Main Content ─────────────────────────────────────────── */
 main {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
 
+/* ── Filter Bar ───────────────────────────────────────────── */
 #filters {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(245, 197, 24, 0.25);
+    backdrop-filter: blur(8px);
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
     align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 #filters label {
     font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: #f5c518;
+    text-transform: uppercase;
 }
 
 #filters select,
 #filters input[type="number"] {
-    padding: 0.4rem 0.6rem;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f0eaff;
+    border: 1px solid rgba(245, 197, 24, 0.3);
+    border-radius: 6px;
+    padding: 0.45rem 0.75rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
-.ride-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 1rem;
-    margin-bottom: 1rem;
+#filters select:focus,
+#filters input[type="number"]:focus {
+    border-color: #f5c518;
+    box-shadow: 0 0 0 2px rgba(245, 197, 24, 0.2);
 }
 
-.ride-card h3 {
-    margin-bottom: 0.5rem;
+#filters select option {
+    background: #1a1050;
+    color: #f0eaff;
 }
 
-.ride-card p {
-    margin-bottom: 0.4rem;
-}
-
-/* Thrill level badges */
-.thrill-low {
-    background: #10b981;
-    color: #fff;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-}
-
-.thrill-medium {
-    background: #f59e0b;
-    color: #fff;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-}
-
-.thrill-high {
-    background: #ef4444;
-    color: #fff;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-}
-
-/* Add and Remove buttons */
-.add-btn {
-    background: #10b981;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-}
-
-.add-btn:hover {
-    background: #059669;
-}
-
-.remove-btn {
-    background: #ef4444;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-}
-
-.remove-btn:hover {
-    background: #dc2626;
-}
-
+/* ── Filter Button ────────────────────────────────────────── */
 #filter-button {
-    background: #1f2937;
-    color: #fff;
+    background: linear-gradient(135deg, #f5c518, #e0a800);
+    color: #0d0d2b;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
     cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(245, 197, 24, 0.3);
 }
 
 #filter-button:hover {
-    background: #374151;
+    background: linear-gradient(135deg, #ffd700, #f5c518);
+    box-shadow: 0 4px 16px rgba(245, 197, 24, 0.5);
+    transform: translateY(-1px);
 }
 
-footer {
-    background: #1f2937;
-    color: #fff;
+/* ── Ride Cards ───────────────────────────────────────────── */
+#ride-list,
+#itinerary-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+#ride-list p,
+#itinerary-list p {
+    grid-column: 1 / -1;
     text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
+    color: rgba(240, 234, 255, 0.6);
+    font-size: 1rem;
+    padding: 2rem 0;
+}
+
+#itinerary-list p a {
+    color: #f5c518;
+    text-decoration: none;
+}
+
+#itinerary-list p a:hover {
+    text-decoration: underline;
+}
+
+.ride-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
+    border: 1px solid rgba(245, 197, 24, 0.2);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ride-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: rgba(245, 197, 24, 0.5);
+}
+
+.ride-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: #f5c518;
+    text-shadow: 0 0 10px rgba(245, 197, 24, 0.3);
+}
+
+.ride-card p {
+    font-size: 0.9rem;
+    color: rgba(240, 234, 255, 0.85);
+    line-height: 1.5;
+}
+
+/* ── Thrill Level Badges ──────────────────────────────────── */
+.thrill-low {
+    display: inline-block;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.thrill-medium {
+    display: inline-block;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.thrill-high {
+    display: inline-block;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* ── Add / Remove Buttons ─────────────────────────────────── */
+.add-btn {
+    margin-top: auto;
+    align-self: flex-start;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.1rem;
+    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.add-btn:hover {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.5);
+    transform: translateY(-1px);
+}
+
+.remove-btn {
+    margin-top: auto;
+    align-self: flex-start;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.1rem;
+    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.remove-btn:hover {
+    background: linear-gradient(135deg, #f87171, #ef4444);
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.5);
+    transform: translateY(-1px);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer {
+    background: linear-gradient(135deg, #0a0a2e 0%, #1a1050 50%, #0a0a2e 100%);
+    border-top: 2px solid #f5c518;
+    color: rgba(240, 234, 255, 0.6);
+    text-align: center;
+    padding: 1.25rem;
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    #filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #ride-list,
+    #itinerary-list {
+        grid-template-columns: 1fr;
+    }
 }
